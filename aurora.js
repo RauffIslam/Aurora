@@ -9,15 +9,94 @@ const cmd = require("node-cmd");
 var bot = new Eris.CommandClient(config.bot_token, {}, {
     description: "The prettiest bot for discord.",
     owner: "Rauf#9245",
-    prefix: config.prefix
+    prefix: config.prefix,
+    defaultHelpCommand: false
 });
 
 bot.on("ready", () => { // When the bot is ready
   console.log(`Ready for use on ${moment().format('LL')} at ${moment().format('LTS')}`); // Log "Ready!"
 });
 
+// help command
+bot.registerCommand('help', (msg, args) => {
+  console.log(`${msg.content} was ran on server ${msg.channel.guild.name} in text channel #${msg.channel.name} by ${msg.author.username}#${msg.author.discriminator}`)
+    bot.createMessage(msg.channel.id, {
+      embed: {
+        title: "\nHelp",
+        description: "Aurora's Help Command",
+        author: { 
+          name: bot.user.username,
+          icon_url: bot.user.avatarURL
+        },
+        color: 0xfa91b8,
+        fields: [
+          {
+            name: "\nPing",
+            value: "**Description**: Get Aurora's response time in ms (milliseconds). \n**Usage**: +ping",
+            inline: true
+          },
+          {
+            name: "\nAvatar",
+            value: "**Description**: Get the profile picture of any user in the server. \n**Usage**: +avatar, +avatar @user",
+            inline: true
+          },
+          {
+            name: "\nTime",
+            value: "**Description**: Get the time in Aurora's timezone (est). \n**Usage**: +time",
+            inline: true
+          },
+          {
+            name: "\nUptime",
+            value: "**Description**: Get Aurora's uptime. \n**Usage**: +uptime",
+            inline: true
+          }
+        ],
+        footer: {
+          text: "This is only page 1 of Aurora's help command. To get to another page, use +help (page number)"
+        } 
+      }
+    });
+      if(args[0] === "2")
+      bot.createMessage(msg.channel.id, {
+        embed: {
+          title: "\nHelp",
+          description: "Aurora's Help Command",
+          author: { 
+            name: bot.user.username,
+            icon_url: bot.user.avatarURL
+          },
+          color: 0xfa91b8,
+          fields: [
+            {
+              name: "\nHug",
+              value: "**Description**: Hug a user or have Aurora hug you. \n**Usage**: +hug, +hug @user",
+              inline: true
+            },
+            {
+              name: "\nFight",
+              value: "**Description**: Get the profile picture of any user in the server. \n**Usage**: +avatar, +avatar @user",
+              inline: true
+            },
+            {
+              name: "\nKiss",
+              value: "**Description**: Get the time in Aurora's timezone (est). \n**Usage**: +time",
+              inline: true
+            },
+            {
+              name: "\na_kiss",
+              value: "**Description**: Get Aurora's uptime. \n**Usage**: +uptime",
+              inline: true
+            }
+          ],
+          footer: {
+            text: "This is only page 2 of Aurora's help command. To get to another page, use +help (page number)"
+          } 
+        }
+      });
+  });
+
 // ping command
-bot.registerCommand("ping", (msg, args) => {
+bot.registerCommand('ping', (msg, args) => {
   console.log(`${msg.content} was ran on server ${msg.channel.guild.name} in text channel #${msg.channel.name} by ${msg.author.username}#${msg.author.discriminator}`)
   let initTime = Date.now();
 
@@ -192,7 +271,7 @@ if(args[0], args[1]) {
 
 // Reboot command
 bot.registerCommand('reboot', (msg, args) => {
-  if(msg.author.id !== "172557961133162496" ) {
+  if(msg.author.id !== config.ownerID) {
     msg.channel.createMessage('Are you sure you can use this command?')
   } else {
     console.log(`Restarting Aurora as Requested by ${msg.author.username}`)
@@ -203,7 +282,7 @@ bot.registerCommand('reboot', (msg, args) => {
 
 // Shutdown command
 bot.registerCommand('shutdown', (msg, args) => {
-  if(msg.author.id !== "172557961133162496" ) {
+  if(msg.author.id !== config.ownerID) {
     msg.channel.createMessage('Are you sure you can use this command?')
   } else {
     console.log(`Turning Off Aurora as Requested by ${msg.author.username}`)

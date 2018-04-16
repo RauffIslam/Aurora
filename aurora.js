@@ -355,7 +355,7 @@ bot.registerCommand('a_kiss', (msg, args) => {
 // dice command
 bot.registerCommand('dice', (msg, args) => {
   console.log(`${msg.content} was ran on server ${msg.channel.guild.name} in text channel #${msg.channel.name} by ${msg.author.username}#${msg.author.discriminator}`)
-  var rand = Math.floor(Math.random() * Math.floor(6));
+  var rand = Math.floor(Math.random() * Math.floor(6) + Math.floor(1));
 
 msg.channel.createMessage(`:game_die:`)
 msg.channel.createMessage(`You rolled a ${rand}! `)

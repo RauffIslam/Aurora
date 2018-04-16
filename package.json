@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "eris": "^0.8.5",
+    "fs-extra": "^5.0.0",
     "moment": "^2.22.0",
     "node-cmd": "^3.0.0",
     "node-run-cmd": "^1.0.1",

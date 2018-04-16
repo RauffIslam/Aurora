@@ -10,10 +10,10 @@ const lorempixel = require("random-cat");
 const catNames = require("cat-names");
 const catFacts = require("cat-facts");
 const urban = require("urban");
-const fs = require("fs");
-const copyFile = require("quickly-copy-file")
+const fs = require("fs-extra");
 
-  function password_generator( len ) {
+
+function password_generator( len ) {
     var length = (len)?(len):(10);
     var string = "abcdefghijklmnopqrstuvwxyz"; //to upper 
     var numeric = '0123456789';
@@ -557,33 +557,6 @@ bot.registerCommand('shutdown', (msg, args) => {
   console.log(`Restarting Aurora as Requested by ${msg.author.username}`)
   msg.channel.createMessage('Restarting Aurora')
     cmd.run('pm2 stop aurora')
-  }
-});
-
-// logs command
-bot.registerCommand('log', (msg, args) => {
-  if(!args[0]) {
-    return "Please specify which log you want. Error or Normal"
-  } else if(args[0] == "normal") {
-    msg.channel.createMessage("Sending you the normal log via DM")
-
-    var source = require("C:\\Users\\Rauf Islam\\.pm2\\logs\\aurora-out-0.log");
-    var destination = "./aurora-log.txt"
-
-    fs.copyFile(source, destination, (err) => {
-      if (err) throw err;
-      console.log('source.txt was copied to destination.txt');
-    });
-  } else if(args[0] == "error") {
-    msg.channel.createMessage("Sending you the normal log via DM")
-
-
-    copyFile('./.pm2/logs/aurora-error-0.log', './aurora-error.log', function(error) {
-      if (error) return console.error(error);
-      console.log('File was copied!')
-    });
-  } else {
-    return "Please specify which log you want. Error or Normal"
   }
 });
 

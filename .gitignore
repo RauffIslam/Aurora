@@ -1,2 +1,4 @@
 config.json
 node_modules
+aurora_backup.js
+base_command.js

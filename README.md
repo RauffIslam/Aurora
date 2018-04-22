@@ -1,13 +1,13 @@
 # Aurora
 Aurora, the prettiest bot for discord.
 
-        Aurora has updated to [Version 2]
+        Aurora has updated to [Version 2.0.1]
 
-        Changelog: 
-        **Version 2.0.0 (Overhaul Update)**
+        Changelog: // See Changelog.md for older changelog(s)
+        **Version 2.0.1 (Minor Update)**
 
-        Removed: Some useless commands
+        Removed: Nothing
 
-        Changed: Everything
+        Changed: This?
 
-        Added: ./commands/ folder exists now
+        Added: changelog.md so you can look back at the update history.

@@ -1,3 +1,4 @@
+// Constants
 const Eris = require("eris");
 const moment = require("moment");
 const config = require("./config.json");
@@ -39,6 +40,7 @@ var bot = new Eris.CommandClient(config.bot_token, {
     defaultHelpCommand: true,
 });
 
+// globals
 global.bot = bot;
 global.moment = moment;
 global.config = config;
